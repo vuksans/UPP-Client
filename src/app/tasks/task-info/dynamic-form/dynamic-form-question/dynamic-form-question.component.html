@@ -1,0 +1,35 @@
+<!--<div>
+  works!
+</div>-->
+<div [formGroup]="form" class="form-group">
+  <label [attr.for]="question.key">{{question.label}}</label>
+  <div [ngSwitch]="question.controlType">
+
+    <div *ngSwitchCase="'textBox'">
+      <input *ngIf="question.key != 'pdfJournal'" [id]="question.key" [formControlName]="question.key" class="form-control">
+      <input *ngIf="question.key === 'pdfJournal'" type="file" class="form-control-file" (change)="onFileSelected($event)" [id]="question.key" [formControlName]="question.key">
+    </div>
+    <div *ngSwitchCase="'dropDown'">
+      <select *ngIf="question.key !== 'reviewers'" [formControlName]="question.key" class="form-control">
+        <option *ngFor="let opt of question.options" [id]="question.key"  [value]="opt.key">{{opt.value}}</option>
+      </select>
+      <select *ngIf="question.key === 'reviewers'" [formControlName]="question.key" class="form-control" multiple>
+        <option *ngFor="let opt of question.options" [id]="question.key"  [value]="opt.key">{{opt.value}}</option>
+      </select>
+    </div>
+    <div *ngSwitchCase="'array'">
+      <button (click)="addFormGroup()" type="button" class="btn btn-info">Add!</button>
+      <hr>
+      <!--<app-dynamic-form-group-question *ngFor="let group of form.get(question.key).controls; let i = index" [index]="i" [question]="question" [formGroup]="group"></app-dynamic-form-group-question>-->
+      <div [formArrayName]="question.key" *ngFor="let group of form.get(question.key).controls; let i = index">
+        <div [formGroupName]="i">
+          <div *ngFor="let property of question.properties" class="form-group">
+            <label [attr.for]="property.fieldName+i">{{property.fieldName}}</label>
+            <input class="form-control" [id]="property.fieldName+i" [formControlName]="property.fieldName">
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

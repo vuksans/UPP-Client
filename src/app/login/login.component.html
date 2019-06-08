@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="container mainContent">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center">
+        <p class="text-center text-black-50">Login using your existing account</p>
+        <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+          <fieldset>
+            <div class="form-group">
+              <input type="email" name="username" id="username" class="form-control input-lg" placeholder="Username" ngModel>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" ngModel>
+            </div>
+            <a style="cursor: pointer">Did you forget your password?</a>
+            <hr>
+            <div class="alert alert-danger" role="alert" *ngIf="flag">
+              Bad credentials! Try again
+            </div>
+            <div>
+              <input type="submit" class="btn btn-success" value="Sign In">
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

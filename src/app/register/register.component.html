@@ -1,0 +1,52 @@
+<div class="container-fluid" style="padding-top: 8%">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="alert alert-success" *ngIf="registerSuccess" role="alert">
+          Register successful, please check your email!
+        </div>
+        <div class="alert alert-danger" *ngIf="registerSuccess === false" role="alert">
+          Email already in use! Please pick another one!
+        </div>
+        <div class="loading" *ngIf="working"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center">
+        <p class="text-center text-black-50">Sign up to our platform for free!</p>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+          <fieldset>
+            <div class="form-group">
+              <input type="email" formControlName="email" name="email" id="email" class="form-control input-lg" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" formControlName="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <input type="password" formControlName="repeatPassword" name="repeatPassword" id="repeatPassword" class="form-control input-lg" placeholder="Repeat password">
+              <span style="color: red" *ngIf="passwordsMatch">Passwords must match!</span>
+            </div>
+            <div class="form-group">
+              <input name="firstName" formControlName="firstName" id="firstName" class="form-control input-lg" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <input name="lastName" formControlName="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <input name="country" formControlName="country" id="country" class="form-control input-lg" placeholder="Country">
+            </div>
+            <div class="form-group">
+              <input name="city" formControlName="city" id="city" class="form-control input-lg" placeholder="City">
+            </div>
+            <br>
+            <div>
+              <input type="submit" class="btn btn-success" [disabled]="!signUpForm.valid" value="Sign In">
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

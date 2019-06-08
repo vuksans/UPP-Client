@@ -1,0 +1,29 @@
+<div class="container" style="padding-top: 10%" xmlns="http://www.w3.org/1999/html">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <p>Please choose a magazine</p>
+      <ul class="list-group">
+        <li class="list-group-item text-center" (click)="startProcess(i)" style="cursor: pointer" appItemHover *ngFor="let magazine of magazinesSliced; let i = index" >{{magazine.name}}</li>
+      </ul>
+      <hr>
+      <div class="text-center">
+        <button class="btn btn-primary" (click)="previousPage()" *ngIf="pageNumber !== 1">Back</button>
+        &nbsp;
+        <button (click)="nextPage()" class="btn btn-primary" *ngIf="pageNumber < maxPages">Next</button>
+      </div>
+      <div class="loading" *ngIf="working"></div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content>
+  <div class="modal-header" style="background-color: forestgreen">
+    <h4 class="modal-title text-center" style="color: white">Success</h4>
+  </div>
+  <div class="modal-body text-center">
+    <img src="assets/successIcon.png">
+    <h5>Success, you will be redirected!</h5>
+  </div>
+</ng-template>
+

@@ -1,0 +1,26 @@
+<nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-light">
+  <div class="container">ng s
+    <a class="navbar-brand" routerLink="/welcome">Science Station</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/magazines/create" *ngIf="isUserLogged" href="#">New journal</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" *ngIf="isUserLogged" routerLink="/tasks" style="cursor: pointer;">
+            My tasks <span class="badge badge-light">{{numberOfTasks}}</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isUserLogged" (click)="showDropDown()">
+          <a class="nav-link dropdown-toggle" style="cursor: pointer" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'Welcome ' + username}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" [ngStyle]="{display : styleFlag ? 'block' : 'none'}">
+            <a class="dropdown-item">{{email}}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/changePassword">Change password</a>
+            <a class="dropdown-item" style="cursor: pointer" (click)="signOut()" >Sign out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

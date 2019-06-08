@@ -1,0 +1,25 @@
+.ml-auto .dropdown-menu {
+  left: auto !important;
+  right: 0px;
+}
+
+#mainNav {
+  color:transparent;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  font-weight: 500;
+}
+.navbar-brand:hover {
+  font-weight: 700;
+}
+.nav-link{
+  color: #666666 !important;
+  font-weight:500;
+}
+.nav-link:hover {
+  font-weight: 700;
+}
+
+

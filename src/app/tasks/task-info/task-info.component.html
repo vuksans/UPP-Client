@@ -1,0 +1,53 @@
+<div class="container" style="padding-top: 10%">
+  <div class="row">
+    <div class="col-md-5">
+      <div *ngIf="processInfo != null">
+        <button type="button" (click)="downloadFile()" class="btn btn-primary btn-lg">Download</button>
+        <table class="table">
+          <tr>
+            <th>Headline</th>
+            <td>{{processInfo.headline}}</td>
+          </tr>
+          <tr>
+            <th>Abstract</th>
+            <td>{{processInfo.journalAbstract}}</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>{{processInfo.authorName}}</td>
+          </tr>
+          <tr>
+            <th>Branch</th>
+            <td>{{processInfo.branchName}}</td>
+          </tr>
+          <tr>
+            <th>Key points</th>
+            <td>{{processInfo.keyPoints}}</td>
+          </tr>
+        </table>
+        <hr>
+        <!--<ul>
+          <li *ngFor="let comment of processInfo.reviewCommentDTOList">{{comment.publicComment}}</li>
+        </ul>-->
+        <div *ngIf="processInfo.reviewCommentDTOList != null && processInfo.reviewCommentDTOList.length > 0 && (user.userRole === 'ROLE_EDITOR' || user.userRole === 'ROLE_AUTHOR' )">
+          <h5>Comments:</h5>
+          <table *ngFor="let comment of processInfo.reviewCommentDTOList" class="table table-dark">
+            <tr>
+              <th>{{comment.reviewer}}</th>
+            </tr>
+            <tr>
+              <td>{{comment.publicComment}}</td>
+            </tr>
+            <tr *ngIf="user.userRole === 'ROLE_EDITOR'">
+              <td>{{comment.hiddenComment}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <app-dynamic-form></app-dynamic-form>
+    </div>
+  </div>
+</div>

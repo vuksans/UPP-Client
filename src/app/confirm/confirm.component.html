@@ -1,0 +1,15 @@
+<div class="container-fluid" style="padding-top: 10%">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="alert alert-success" role="alert" *ngIf="confirmTry">
+          You have been successfully registered, you can log in now!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="!confirmTry">
+          Error, invalid token!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container" style="padding-top: 10%">
+  <div class="row">
+    <div class="col-md-4">
+      <p class="text-center">My tasks</p>
+      <ul class="list-group">
+        <li class="list-group-item text-center" [routerLink]="['../task/'+task.taskId]" style="cursor: pointer" appItemHover *ngFor="let task of userTasks">{{task.magazineName+ ' - ' + task.taskName}}</li>
+      </ul>
+    </div>
+    <div class="col-md-1"></div>
+    <!--<div class="col-md-7">
+      <app-dynamic-form [hidden]="hideForm"></app-dynamic-form>
+    </div>-->
+  </div>
+</div>
